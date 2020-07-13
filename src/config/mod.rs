@@ -119,6 +119,11 @@ pub trait Options: InternalOptions + Sized {
         WithOtherIntEncoding::new(self)
     }
 
+    /// Sets the length encoding to custom
+    fn with_user_encoding<T: IntEncoding>(self) -> WithOtherIntEncoding<Self, T> {
+        WithOtherIntEncoding::new(self)
+    }
+
     /// Sets the deserializer to reject trailing bytes
     fn reject_trailing_bytes(self) -> WithOtherTrailing<Self, RejectTrailing> {
         WithOtherTrailing::new(self)
